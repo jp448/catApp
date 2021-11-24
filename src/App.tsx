@@ -8,7 +8,7 @@ function App() {
     <div className="App">
         <header className="App-header">
             Welcome to Cat App!
-            <Button />
+            <Button text="Get Started"/>
         </header>
         <Footer/>
     </div>
