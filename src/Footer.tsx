@@ -1,11 +1,31 @@
 import React from 'react';
-import './Footer.css';
+import styled from "styled-components";
+
+const StyledFooter = styled.footer`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: purple;
+    color: #ffffff;
+    height: 3rem;
+`;
+
+const StyledLink = styled.a`
+    color: #FFFFFF;
+    text-decoration: none;
+`;
 
 function Footer() {
     return (
-        <div className="Footer">
+        <StyledFooter className="Footer">
             <div>
-                <a target="_blank" href="https://icons8.com/icon/121439/cat">Cat</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                <StyledLink target="_blank" href="https://icons8.com/icon/121439/cat">
+                    Cat
+                </StyledLink>
+                <span> icon by </span>
+                <StyledLink target="_blank" href="https://icons8.com">
+                     Icons8
+                </StyledLink>
             </div>
             <div>
                 JP448 Website
@@ -13,7 +33,7 @@ function Footer() {
             <div>
                 Founded 19.11.2021
             </div>
-        </div>
+        </StyledFooter>
     );
 }
 
