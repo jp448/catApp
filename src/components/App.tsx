@@ -1,26 +1,9 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
 import Button from './Button';
-import Nav from './Nav';
-import styled from "styled-components";
 import { GlobalStyles } from './../global';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './../Themes/theme';
-
-const Header = styled.h1`
-    background-color: #fff;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: Purple;
-`;
-
-const Wrapper = styled.div`
-    text-align: center;
-`;
 
 function App() {
     const [theme, setTheme] = useState('light');
