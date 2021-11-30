@@ -12,12 +12,13 @@ const PrimaryBtn = styled.button`
 `;
 
 type ButtonProps = {
-    text: string
+    text: string,
+    raiseFunction: () => void,
 }
 
-function Button({text}: ButtonProps) {
+function Button({text, raiseFunction}: ButtonProps) {
     return (
-        <PrimaryBtn>{text}</PrimaryBtn>
+        <PrimaryBtn onClick={raiseFunction}>{text}</PrimaryBtn>
     );
 }
 
