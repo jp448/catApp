@@ -1,23 +1,28 @@
 import React from 'react';
 import styled from "styled-components";
 
-const StyledFooter = styled.footer`
+interface Props {
+    theme: string
+}
+
+const StyledFooter = styled.footer<Props>`
     display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: purple;
-    color: #ffffff;
+    background: ${({ theme }) => theme.footer};
     height: 3rem;
+    width: 100%;
 `;
 
 const StyledLink = styled.a`
-    color: #FFFFFF;
     text-decoration: none;
+    color: "#454AB0";
 `;
 
 function Footer() {
     return (
-        <StyledFooter className="Footer">
+        <StyledFooter >
             <div>
                 <StyledLink target="_blank" href="https://icons8.com/icon/121439/cat">
                     Cat

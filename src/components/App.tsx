@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
-import Button from './Button';
+import Toggle from './Toggle';
+//import CatList from './CatList';
+//import {getCats} from '../Services/CatService'
 import { GlobalStyles } from './../global';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './../Themes/theme';
+
+const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center; 
+`;
+
+const Heading = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 0 2rem;
+`;
+
+const Header = styled.h1`
+    font-size: 2.5rem;
+    margin: 0;
+`;
+
+const Content = styled.div`
+   flex-grow: 1;
+`;
 
 function App() {
     const [theme, setTheme] = useState('light');
+    //const [results, setResults] =useState([]);
+
+    // useEffect(() => {
+    //     async function getCatPictures() {
+    //         const cats = await getCats();
+    //         setResults(cats);
+    //     }
+    //
+    //     getCatPictures()
+    // }, [results]);
 
     // The function that toggles between themes
         const toggleTheme = () => {
@@ -22,9 +58,17 @@ function App() {
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <>
               <GlobalStyles />
-              <Button raiseFunction={toggleTheme} text={"Toggle Theme"}/>
-              <h1>It's a light theme!</h1>
-              <Footer/>
+              <Main>
+                  <Heading>
+                      <Header>Cat App</Header>
+                      <Toggle theme={theme} toggleTheme={toggleTheme} />
+                  </Heading>
+
+                  <Content>
+                      {/*<CatList />*/}
+                  </Content>
+                  <Footer/>
+              </Main>
           </>
       </ThemeProvider>
   );
