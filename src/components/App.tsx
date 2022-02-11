@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import Toggle from './Toggle';
-//import CatList from './CatList';
-//import {getCats} from '../Services/CatService'
+import CatList from './CatList';
+import {getCats} from '../Services/CatService';
 import { GlobalStyles } from './../global';
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './../Themes/theme';
@@ -33,16 +33,16 @@ const Content = styled.div`
 
 function App() {
     const [theme, setTheme] = useState('light');
-    //const [results, setResults] =useState([]);
+    const [results, setResults] =useState([]);
 
-    // useEffect(() => {
-    //     async function getCatPictures() {
-    //         const cats = await getCats();
-    //         setResults(cats);
-    //     }
-    //
-    //     getCatPictures()
-    // }, [results]);
+    useEffect(() => {
+        async function getCatPictures() {
+            const cats = await getCats();
+            setResults(cats);
+        }
+
+        getCatPictures();
+    }, [results]);
 
     // The function that toggles between themes
         const toggleTheme = () => {
@@ -65,7 +65,7 @@ function App() {
                   </Heading>
 
                   <Content>
-                      {/*<CatList />*/}
+                      <CatList />
                   </Content>
                   <Footer/>
               </Main>
