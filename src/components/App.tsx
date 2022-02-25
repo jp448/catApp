@@ -32,17 +32,22 @@ const Content = styled.div`
 `;
 
 function App() {
+    interface Provider {
+        id: string,
+        created: string,
+        tags: string[]
+    }
     const [theme, setTheme] = useState('light');
-    const [results, setResults] =useState([]);
+    const [results, setResults] = useState<Provider[]>([]);
 
     useEffect(() => {
-        async function getCatPictures() {
+        const getCatPictures = async () => {
             const cats = await getCats();
             setResults(cats);
-        }
+        };
 
         getCatPictures();
-    }, [results]);
+    }, []);
 
     // The function that toggles between themes
         const toggleTheme = () => {
@@ -65,7 +70,7 @@ function App() {
                   </Heading>
 
                   <Content>
-                      <CatList />
+                      <CatList cats={results} />
                   </Content>
                   <Footer/>
               </Main>
