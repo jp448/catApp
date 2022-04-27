@@ -9,8 +9,6 @@ const StyledList = styled.ul`
 `;
 
 const StyledListItem = styled.li`
-    min-width: 300px;
-    min-height: 300px;
 `;
 
 type CatListProps = {

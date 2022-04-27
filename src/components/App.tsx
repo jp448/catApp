@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 import Toggle from './Toggle';
-import CatList from './CatList';
-import {getCats} from '../Services/CatService';
+import Movies from './Movies'
 import { GlobalStyles } from './../global';
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './../Themes/theme';
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 const Main = styled.div`
     display: flex;
@@ -32,22 +34,7 @@ const Content = styled.div`
 `;
 
 function App() {
-    interface Provider {
-        id: string,
-        created: string,
-        tags: string[]
-    }
     const [theme, setTheme] = useState('light');
-    const [results, setResults] = useState<Provider[]>([]);
-
-    useEffect(() => {
-        const getCatPictures = async () => {
-            const cats = await getCats();
-            setResults(cats);
-        };
-
-        getCatPictures();
-    }, []);
 
     // The function that toggles between themes
         const toggleTheme = () => {
@@ -60,22 +47,24 @@ function App() {
             }
         }
   return (
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <>
-              <GlobalStyles />
-              <Main>
-                  <Heading>
-                      <Header>Cat App</Header>
-                      <Toggle theme={theme} toggleTheme={toggleTheme} />
-                  </Heading>
+      <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+              <>
+                  <GlobalStyles />
+                  <Main>
+                      <Heading>
+                          <Header>Cat App</Header>
+                          <Toggle theme={theme} toggleTheme={toggleTheme} />
+                      </Heading>
 
-                  <Content>
-                      <CatList cats={results} />
-                  </Content>
-                  <Footer/>
-              </Main>
-          </>
-      </ThemeProvider>
+                      <Content>
+                          <Movies />
+                      </Content>
+                      <Footer/>
+                  </Main>
+              </>
+          </ThemeProvider>
+      </QueryClientProvider>
   );
 }
 
