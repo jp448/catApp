@@ -3,7 +3,9 @@ export const lightTheme = {
     text: '#363537',
     toggleBorder: '#FFF',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
-    footer: "#BE95C4",
+    footer: "#883FC7",
+    card: '#D6D6D6',
+    header: '#883FC7',
 }
 
 export const darkTheme = {
@@ -11,5 +13,7 @@ export const darkTheme = {
     text: '#FAFAFA',
     toggleBorder: '#6B8096',
     gradient: 'linear-gradient(#091236, #1E215D)',
-    footer: '#4A2C4E',
+    footer: '#883FC7',
+    card: '#525053',
+    header: '#883FC7',
 }

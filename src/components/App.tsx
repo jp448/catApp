@@ -10,13 +10,15 @@ import { QueryClientProvider, QueryClient } from "react-query";
 const queryClient = new QueryClient();
 
 const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: center; 
+    height: 100%;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 8rem auto 3rem;
 `;
 
 const Heading = styled.div`
+    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -27,10 +29,15 @@ const Heading = styled.div`
 const Header = styled.h1`
     font-size: 2.5rem;
     margin: 0;
+    color: ${({ theme }) => theme.header};
 `;
 
 const Content = styled.div`
-   flex-grow: 1;
+   grid-column: 2 / -1;
+`;
+
+const Title = styled.div`
+    background: ${({ theme }) => theme.footer};
 `;
 
 function App() {
@@ -53,10 +60,10 @@ function App() {
                   <GlobalStyles />
                   <Main>
                       <Heading>
-                          <Header>Cat App</Header>
+                          <Header>Pick A Movie</Header>
                           <Toggle theme={theme} toggleTheme={toggleTheme} />
                       </Heading>
-
+                      <Title></Title>
                       <Content>
                           <Movies />
                       </Content>

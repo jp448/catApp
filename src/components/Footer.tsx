@@ -6,6 +6,7 @@ interface Props {
 }
 
 const StyledFooter = styled.footer<Props>`
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     justify-content: space-around;

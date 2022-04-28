@@ -7,12 +7,11 @@ const Card = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #4D5057;
+  background: ${({ theme }) => theme.card};
 `;
 
 const Image = styled.img`
-      width: 400px;
-      height: 300px;
+      width: 100%;
       object-fit: contain;
 `;
 
@@ -23,6 +22,11 @@ const CardHeader = styled.div`
 
 const MainContent = styled.div`
     padding: 1rem;
+`;
+
+const Header = styled.div`
+    color: ${({ theme }) => theme.header};
+    font-weight: bold;
 `;
 
 type MovieProps = {
@@ -41,9 +45,9 @@ const Movie = ({movie}: MovieProps) => {
                 <Image src={movie.movie_banner} alt=""/>
             </CardHeader>
             <MainContent>
-                <h3>{movie.title}</h3>
-                <p>{movie.release_date}</p>
-                <p>{movie.director}</p>
+                <Header>{movie.title}</Header>
+                <p>directed by {movie.director}</p>
+                <p>released in {movie.release_date}</p>
             </MainContent>
         </Card>
     );

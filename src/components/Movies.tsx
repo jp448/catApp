@@ -7,7 +7,16 @@ const Container = styled.div`
     width: 100%;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 2rem;
+`;
+
+const Loading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
 `;
 
 function Movies() {
@@ -16,7 +25,7 @@ function Movies() {
         movie_banner: string,
         title: string,
         release_date: string,
-        director: string
+        director: string,
     };
 
     const fetchMovies = async () => {
@@ -27,7 +36,7 @@ function Movies() {
     const {data, status} = useQuery<Movie[], Error>("movies", fetchMovies)
 
     if(status === 'loading') {
-        return <div>Loading...</div>
+        return <Loading>Loading...</Loading>
     }
 
     if(status === 'error') {

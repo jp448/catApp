@@ -7,22 +7,13 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    min-height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: Segoe UI, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: all 0.25s linear;
-    display: flex;
-    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0px;
   }
-  
-  #root {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
- `;
+  `;
