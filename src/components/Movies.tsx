@@ -33,7 +33,7 @@ function Movies() {
         return response.json();
     }
 
-    const {data, status} = useQuery<Movie[], Error>("movies", fetchMovies)
+    const {data, status} = useQuery<Movie[], Error>("movies", fetchMovies);
 
     if(status === 'loading') {
         return <Loading>Loading...</Loading>
